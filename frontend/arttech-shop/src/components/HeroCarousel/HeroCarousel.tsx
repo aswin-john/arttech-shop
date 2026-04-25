@@ -189,7 +189,7 @@ export function HeroCarousel(): ReactNode {
   return (
     <section
       id="hero-carousel"
-      className="relative w-full h-screen overflow-hidden bg-[#0a0a0f]"
+      className="relative w-full h-[calc(100vh-4rem)] lg:h-[calc(100vh-4.5rem)] overflow-hidden bg-[#0a0a0f]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -246,7 +246,7 @@ export function HeroCarousel(): ReactNode {
       </div>
 
       {/* ─── Controls overlay ─── */}
-      <div className="absolute bottom-6 sm:bottom-8 left-0 right-0 flex flex-col items-center gap-4 sm:gap-5 z-10">
+      <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 flex flex-col items-center gap-2.5 sm:gap-3 z-10">
         {/* Dot indicators */}
         <div className="flex items-center gap-2.5" role="tablist" aria-label="Carousel slides">
           {CAROUSEL_DATA.map((slide, index) => (

@@ -5,13 +5,13 @@ import { HeroCarousel } from './components/HeroCarousel/HeroCarousel';
 /**
  * Root application component.
  * Wraps all content in ThemeProvider and composes the main layout:
- * transparent header overlaid on a full-screen hero carousel.
+ * fixed header followed by the hero carousel below it.
  */
 function App() {
   return (
     <ThemeProvider>
       <Header />
-      <main>
+      <main className="pt-16 lg:pt-[4.5rem]">
         <HeroCarousel />
       </main>
     </ThemeProvider>
