@@ -90,19 +90,14 @@ function ChevronRightIcon(): ReactNode {
 /**
  * Computes the translateX value based on active index, card width, and viewport.
  * Centers the active card in the viewport.
+ * Uses a consistent 50% card width across all screen sizes so the
+ * desktop multi-card layout is preserved on mobile and tablet.
  */
 function computeTranslate(
   containerWidth: number,
   activeIndex: number,
 ): number {
-  // Detect breakpoint via container width
-  let cardWidthFraction = 0.5; // desktop default (50%)
-  if (containerWidth < 640) {
-    cardWidthFraction = 1; // mobile: full width
-  } else if (containerWidth < 1024) {
-    cardWidthFraction = 0.7; // tablet: 70%
-  }
-
+  const cardWidthFraction = 0.5;
   const cardWidth = containerWidth * cardWidthFraction;
   // Center formula: offset = (containerWidth - cardWidth) / 2 - activeIndex * cardWidth
   const centerOffset = (containerWidth - cardWidth) / 2;
@@ -189,7 +184,7 @@ export function HeroCarousel(): ReactNode {
   return (
     <section
       id="hero-carousel"
-      className="relative w-full h-[calc(100vh-4rem)] lg:h-[calc(100vh-4.5rem)] overflow-hidden bg-[#0a0a0f]"
+      className="relative w-full py-6 overflow-hidden bg-[#0a0a0f]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -245,8 +240,8 @@ export function HeroCarousel(): ReactNode {
         ))}
       </div>
 
-      {/* ─── Controls overlay ─── */}
-      <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 flex flex-col items-center gap-2.5 sm:gap-3 z-10">
+      {/* ─── Controls ─── */}
+      <div className="mt-4 flex flex-col items-center gap-2.5 z-10">
         {/* Dot indicators */}
         <div className="flex items-center gap-2.5" role="tablist" aria-label="Carousel slides">
           {CAROUSEL_DATA.map((slide, index) => (
