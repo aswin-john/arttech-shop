@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@500;600;700;800&display=swap');
 
 /* ───────────────────────────────────────────────────
@@ -72,4 +73,18 @@ body {
 .dark body {
   background-color: var(--color-dark-surface);
   color: var(--color-dark-text-primary);
+}
+
+/* ───────────────────────────────────────────────────
+   Keyframe Animations
+   ─────────────────────────────────────────────────── */
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

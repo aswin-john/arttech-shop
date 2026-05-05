@@ -184,7 +184,9 @@ export function HeroCarousel(): ReactNode {
   return (
     <section
       id="hero-carousel"
-      className="relative w-full py-6 overflow-hidden bg-[#0a0a0f]"
+      className="relative w-full py-6 overflow-hidden
+                 bg-[var(--color-surface-elevated)] dark:bg-[var(--color-dark-surface)]
+                 transition-colors duration-300"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -255,8 +257,8 @@ export function HeroCarousel(): ReactNode {
               className={`rounded-full border-0 p-0 transition-all duration-300 cursor-pointer
                           ${
                             activeIndex === index
-                              ? 'w-8 h-2 bg-white'
-                              : 'w-2 h-2 bg-white/40 hover:bg-white/60'
+                              ? 'w-8 h-2 bg-[var(--color-text-primary)] dark:bg-white'
+                              : 'w-2 h-2 bg-[var(--color-text-muted)] dark:bg-white/40 hover:bg-[var(--color-text-secondary)] dark:hover:bg-white/60'
                           }`}
             />
           ))}
@@ -270,8 +272,11 @@ export function HeroCarousel(): ReactNode {
             disabled={activeIndex === 0}
             onClick={goToPrev}
             className="flex items-center justify-center w-10 h-10 rounded-full
-                       bg-white/10 backdrop-blur-sm border border-white/20
-                       text-white/80 hover:bg-white/20 hover:text-white
+                       bg-black/5 dark:bg-white/10 backdrop-blur-sm
+                       border border-black/10 dark:border-white/20
+                       text-[var(--color-text-secondary)] dark:text-white/80
+                       hover:bg-black/10 dark:hover:bg-white/20
+                       hover:text-[var(--color-text-primary)] dark:hover:text-white
                        disabled:opacity-30 disabled:cursor-not-allowed
                        transition-all duration-200 cursor-pointer"
             aria-label="Previous slide"
@@ -285,8 +290,11 @@ export function HeroCarousel(): ReactNode {
             disabled={activeIndex === slideCount - 1}
             onClick={goToNext}
             className="flex items-center justify-center w-10 h-10 rounded-full
-                       bg-white/10 backdrop-blur-sm border border-white/20
-                       text-white/80 hover:bg-white/20 hover:text-white
+                       bg-black/5 dark:bg-white/10 backdrop-blur-sm
+                       border border-black/10 dark:border-white/20
+                       text-[var(--color-text-secondary)] dark:text-white/80
+                       hover:bg-black/10 dark:hover:bg-white/20
+                       hover:text-[var(--color-text-primary)] dark:hover:text-white
                        disabled:opacity-30 disabled:cursor-not-allowed
                        transition-all duration-200 cursor-pointer"
             aria-label="Next slide"
