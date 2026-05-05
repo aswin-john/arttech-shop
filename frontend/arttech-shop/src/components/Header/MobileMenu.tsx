@@ -164,7 +164,7 @@ export function MobileMenu({
         </nav>
 
         {/* Theme section at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 px-5 py-4 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
+        <div className="absolute bottom-30 left-0 right-0 px-5 py-4 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
           <div className="flex items-center justify-between">
             <span className="text-sm text-[var(--color-text-muted)] dark:text-[var(--color-dark-text-muted)]">
               Appearance
