@@ -16,7 +16,8 @@ export function CarouselCard({ active, children }: CarouselCardProps): ReactNode
     <div
       className={`carousel-card shrink-0
                   w-[50%]
-                  h-[280px] md:h-[320px] lg:h-[360px]
+                  h-[220px] md:h-[320px] lg:h-[360px]
+                  px-2 md:px-3
                   transition-all duration-500
                   ${active ? 'active' : ''}`}
       style={{ transitionTimingFunction: 'var(--ease-out-expo)' }}
