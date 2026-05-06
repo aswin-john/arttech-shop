@@ -1,11 +1,12 @@
 import { ThemeProvider } from './context/ThemeContext';
 import { Header } from './components/Header/Header';
 import { HeroCarousel } from './components/HeroCarousel/HeroCarousel';
+import { ValuePropositions } from './components/ValuePropositions/ValuePropositions';
 
 /**
  * Root application component.
  * Wraps all content in ThemeProvider and composes the main layout:
- * fixed header followed by the hero carousel below it.
+ * fixed header followed by the hero carousel and feature highlights.
  */
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Header />
       <main className="pt-16 lg:pt-[4.5rem]">
         <HeroCarousel />
+        <ValuePropositions />
       </main>
     </ThemeProvider>
   );
