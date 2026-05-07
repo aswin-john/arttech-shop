@@ -2,6 +2,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import { Header } from './components/Header/Header';
 import { HeroCarousel } from './components/HeroCarousel/HeroCarousel';
 import { ValuePropositions } from './components/ValuePropositions/ValuePropositions';
+import { StoryCarousel } from './components/StoryCarousel';
 
 /**
  * Root application component.
@@ -15,6 +16,7 @@ function App() {
       <main className="pt-16 lg:pt-[4.5rem]">
         <HeroCarousel />
         <ValuePropositions />
+        <StoryCarousel />
       </main>
     </ThemeProvider>
   );
