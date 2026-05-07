@@ -138,7 +138,7 @@ export function ValuePropositions(): ReactNode {
     <section
       id="what-we-offer"
       className="w-full
-                 bg-[var(--color-surface)] dark:bg-[var(--color-dark-surface-elevated)]
+                 bg-[var(--color-surface)] dark:bg-[var(--color-dark-surface)]
                  border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]
                  transition-colors duration-300"
     >
