@@ -74,8 +74,8 @@ Error generating stack: `+e.message+`
                  transition-colors duration-300`,children:(0,f.jsxs)(`div`,{className:`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20`,children:[(0,f.jsx)(`h2`,{className:`font-display text-2xl sm:text-3xl lg:text-4xl font-bold
                      text-center
                      text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)]
-                     mb-10 md:mb-14 lg:mb-16`,children:`What We Offer`}),(0,f.jsx)(`div`,{className:`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4
-                     gap-8 sm:gap-6 lg:gap-8`,children:_e.map(e=>(0,f.jsxs)(`div`,{id:`offer-${e.id}`,className:`offer-card flex flex-col items-center text-center
+                     mb-10 md:mb-14 lg:mb-16`,children:`What We Offer`}),(0,f.jsx)(`div`,{className:`grid grid-cols-2 lg:grid-cols-4
+                     gap-6 lg:gap-8`,children:_e.map(e=>(0,f.jsxs)(`div`,{id:`offer-${e.id}`,className:`offer-card flex flex-col items-center text-center
                          py-6 px-4
                          rounded-2xl
                          transition-all duration-300
