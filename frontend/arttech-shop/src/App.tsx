@@ -3,6 +3,7 @@ import { Header } from './components/Header/Header';
 import { HeroCarousel } from './components/HeroCarousel/HeroCarousel';
 import { ValuePropositions } from './components/ValuePropositions/ValuePropositions';
 import { StoryCarousel } from './components/StoryCarousel';
+import { PerspectiveCarousel } from './components/PerspectiveCarousel';
 
 /**
  * Root application component.
@@ -17,6 +18,7 @@ function App() {
         <HeroCarousel />
         <ValuePropositions />
         <StoryCarousel />
+        <PerspectiveCarousel />
       </main>
     </ThemeProvider>
   );
