@@ -131,7 +131,7 @@ const OFFER_ITEMS: OfferItem[] = [
 /**
  * Value Propositions feature highlights section.
  * Displays four value propositions with icons in a responsive grid.
- * Mobile: single column → Tablet: 2 columns → Desktop: 4 columns.
+ * Mobile/Tablet: 2 columns → Desktop: 4 columns.
  */
 export function ValuePropositions(): ReactNode {
   return (
@@ -155,8 +155,8 @@ export function ValuePropositions(): ReactNode {
 
         {/* Feature grid */}
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4
-                     gap-8 sm:gap-6 lg:gap-8"
+          className="grid grid-cols-2 lg:grid-cols-4
+                     gap-6 lg:gap-8"
         >
           {OFFER_ITEMS.map((item) => (
             <div
