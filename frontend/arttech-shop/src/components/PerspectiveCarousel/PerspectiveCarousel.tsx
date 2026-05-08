@@ -252,7 +252,7 @@ export function PerspectiveCarousel({
       </div>
 
       <div className="relative w-full flex justify-center items-center select-none overflow-hidden pb-12">
-        <div className="w-full lg:pl-[240px] relative transition-all duration-300 ease-in-out">
+        <div className="w-full pl-4 sm:pl-8 lg:pl-[240px] relative transition-all duration-300 ease-in-out">
           {/* Main Carousel Track */}
           <div
             className="relative [perspective:600px] flex"
