@@ -1,11 +1,11 @@
 import { useState, useCallback, useEffect, type ReactNode } from 'react';
 
 const IMAGES = [
-  { src: 'https://i.postimg.cc/1X5zGSHT/storyintro1.jpg', alt: 'The Beginning', link: '#IMG1' },
-  { src: 'https://i.postimg.cc/yxQ8nGpN/storyintro2.jpg', alt: 'Our Journey', link: '#IMG2' },
-  { src: 'https://i.postimg.cc/mZ8kbcZG/storyintro3.jpg', alt: 'The Process', link: '#IMG3' },
-  { src: 'https://i.postimg.cc/kXH5bkt1/storyintro4.jpg', alt: 'Craftsmanship', link: '#IMG4' },
-  { src: 'https://i.postimg.cc/8Pc5s1sf/storyintro5.jpg', alt: 'The Result', link: '#IMG5' },
+  { src: 'https://i.postimg.cc/1X5zGSHT/storyintro1.jpg', alt: 'Pencil Sketching', link: '#IMG1' },
+  { src: 'https://i.postimg.cc/yxQ8nGpN/storyintro2.jpg', alt: 'Digital Illustrations', link: '#IMG2' },
+  { src: 'https://i.postimg.cc/mZ8kbcZG/storyintro3.jpg', alt: 'Custom Framing', link: '#IMG3' },
+  { src: 'https://i.postimg.cc/kXH5bkt1/storyintro4.jpg', alt: 'Tattoo Art', link: '#IMG4' },
+  { src: 'https://i.postimg.cc/8Pc5s1sf/storyintro5.jpg', alt: 'Drawing Courses', link: '#IMG5' },
 ];
 
 /**

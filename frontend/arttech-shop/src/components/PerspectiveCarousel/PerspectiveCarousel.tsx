@@ -10,23 +10,23 @@ interface CarouselItem {
 const INITIAL_DATA: CarouselItem[] = [
   {
     image: 'https://picsum.photos/id/117/1000/1000',
-    title: 'Original Netflix Series Theme',
-    desc: "The Victims' Game - Theme Song",
+    title: 'Advanced Illustration Courses',
+    desc: "Master the art of digital drawing",
   },
   {
     image: 'https://picsum.photos/id/137/1000/1000',
-    title: 'Micro-movie Theme Song',
-    desc: 'Can I Like You - Original Soundtrack',
+    title: 'Custom Wooden Frames',
+    desc: 'Perfectly crafted for your canvas',
   },
   {
     image: 'https://picsum.photos/id/153/1000/1000',
-    title: 'Debut Solo Single',
-    desc: 'Child - First Release',
+    title: 'Professional Tattoo Designs',
+    desc: 'Ink your story with unique stencils',
   },
   {
     image: 'https://picsum.photos/id/265/1000/1000',
-    title: 'Emerging Singer-Songwriter',
-    desc: 'Future - Debut Track',
+    title: 'Pencil Sketching Basics',
+    desc: 'Start your journey into fine arts',
   },
 ];
 
