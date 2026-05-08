@@ -59,9 +59,14 @@ export function PerspectiveCarousel({
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Responsive widths
-  const carouselPostWidth = screenWidth > 900 ? 400 : screenWidth * 0.85;
-  const carouselPostMargin = 40;
+  // Responsive widths and margins
+  const isMobile = screenWidth < 768;
+  const carouselPostMargin = isMobile ? 16 : 40;
+  const carouselPostWidth = screenWidth > 900 
+    ? 400 
+    : isMobile 
+      ? (screenWidth - carouselPostMargin * 3) / 2 
+      : screenWidth * 0.85;
 
   // Screen resize handler
   useEffect(() => {
@@ -278,14 +283,14 @@ export function PerspectiveCarousel({
                   }}
                 >
                   <div
-                    className="w-full h-[300px] sm:h-[400px] bg-center bg-cover transition-transform duration-500 ease-out group-hover:scale-[1.02] rounded-xl shadow-lg"
+                    className="w-full h-[200px] md:h-[400px] bg-center bg-cover transition-transform duration-500 ease-out group-hover:scale-[1.02] rounded-xl shadow-lg"
                     style={{ backgroundImage: `url(${item.image})` }}
                   />
-                  <div className="mt-6 text-center">
-                    <h3 className="font-display text-xl font-bold tracking-wide text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)]">
+                  <div className="mt-4 md:mt-6 text-center">
+                    <h3 className="font-display text-base md:text-xl font-bold tracking-wide text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)]">
                       {item.title}
                     </h3>
-                    <p className="mt-3 font-body text-sm tracking-wide opacity-80 text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)]">
+                    <p className="mt-2 md:mt-3 font-body text-xs md:text-sm tracking-wide opacity-80 text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] line-clamp-2 md:line-clamp-none">
                       {item.desc}
                     </p>
                   </div>
