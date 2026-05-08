@@ -1,11 +1,11 @@
 import { useState, useCallback, useEffect, type ReactNode } from 'react';
 
 const IMAGES = [
-  { src: 'https://i.postimg.cc/1X5zGSHT/storyintro1.jpg', alt: 'Pencil Sketching', link: '#IMG1' },
-  { src: 'https://i.postimg.cc/yxQ8nGpN/storyintro2.jpg', alt: 'Digital Illustrations', link: '#IMG2' },
-  { src: 'https://i.postimg.cc/mZ8kbcZG/storyintro3.jpg', alt: 'Custom Framing', link: '#IMG3' },
-  { src: 'https://i.postimg.cc/kXH5bkt1/storyintro4.jpg', alt: 'Tattoo Art', link: '#IMG4' },
-  { src: 'https://i.postimg.cc/8Pc5s1sf/storyintro5.jpg', alt: 'Drawing Courses', link: '#IMG5' },
+  { src: 'https://loremflickr.com/1000/1000/sketch?lock=9', alt: 'Pencil Sketching', link: '#IMG1' },
+  { src: 'https://loremflickr.com/1000/1000/digitalart?lock=10', alt: 'Digital Illustrations', link: '#IMG2' },
+  { src: 'https://loremflickr.com/1000/1000/artgallery?lock=11', alt: 'Custom Framing', link: '#IMG3' },
+  { src: 'https://loremflickr.com/1000/1000/tattoo?lock=12', alt: 'Tattoo Art', link: '#IMG4' },
+  { src: 'https://loremflickr.com/1000/1000/artclass?lock=13', alt: 'Drawing Courses', link: '#IMG5' },
 ];
 
 /**

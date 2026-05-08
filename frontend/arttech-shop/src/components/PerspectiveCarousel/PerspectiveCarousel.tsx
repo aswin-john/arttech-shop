@@ -9,22 +9,22 @@ interface CarouselItem {
 
 const INITIAL_DATA: CarouselItem[] = [
   {
-    image: 'https://picsum.photos/id/117/1000/1000',
+    image: 'https://loremflickr.com/1000/1000/illustration?lock=5',
     title: 'Advanced Illustration Courses',
     desc: "Master the art of digital drawing",
   },
   {
-    image: 'https://picsum.photos/id/137/1000/1000',
+    image: 'https://loremflickr.com/1000/1000/frame?lock=6',
     title: 'Custom Wooden Frames',
     desc: 'Perfectly crafted for your canvas',
   },
   {
-    image: 'https://picsum.photos/id/153/1000/1000',
+    image: 'https://loremflickr.com/1000/1000/tattoo?lock=7',
     title: 'Professional Tattoo Designs',
     desc: 'Ink your story with unique stencils',
   },
   {
-    image: 'https://picsum.photos/id/265/1000/1000',
+    image: 'https://loremflickr.com/1000/1000/sketch?lock=8',
     title: 'Pencil Sketching Basics',
     desc: 'Start your journey into fine arts',
   },

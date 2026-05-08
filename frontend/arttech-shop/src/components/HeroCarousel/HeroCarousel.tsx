@@ -19,25 +19,25 @@ const CAROUSEL_DATA: CarouselSlide[] = [
     id: 1,
     title: 'explore fine arts.',
     image:
-      'https://images.unsplash.com/photo-1468657988500-aca2be09f4c6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80',
+      'https://loremflickr.com/1600/900/fineart?lock=1',
   },
   {
     id: 2,
     title: 'master the strokes.',
     image:
-      'https://images.unsplash.com/photo-1522163723043-478ef79a5bb4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1843&q=80',
+      'https://loremflickr.com/1600/900/painting?lock=2',
   },
   {
     id: 3,
     title: 'frame the beauty.',
     image:
-      'https://images.unsplash.com/photo-1495781856580-b3c4e8d21bf9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1726&q=80',
+      'https://loremflickr.com/1600/900/gallery?lock=3',
   },
   {
     id: 4,
     title: 'ink your story.',
     image:
-      'https://images.unsplash.com/photo-1504903271097-d7e7c7f5f7ad?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1160&q=80',
+      'https://loremflickr.com/1600/900/tattoo?lock=4',
   },
 ];
 
