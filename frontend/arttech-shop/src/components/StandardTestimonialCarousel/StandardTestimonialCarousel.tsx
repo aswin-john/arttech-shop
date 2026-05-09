@@ -117,7 +117,7 @@ export function StandardTestimonialCarousel() {
                                     style={{ width: `${100 / itemsPerView}%` }}
                                 >
                                     <div className="flex flex-col h-full bg-transparent">
-                                        <div className="w-full aspect-square md:aspect-[4/3] lg:aspect-square overflow-hidden mb-6 border border-[var(--color-border)] dark:border-[var(--color-dark-border)] bg-gray-100 dark:bg-gray-800 grayscale hover:grayscale-0 transition-all duration-500">
+                                        <div className="w-full aspect-square md:aspect-[4/3] lg:aspect-square overflow-hidden mb-6 border border-[var(--color-border)] dark:border-[var(--color-dark-border)] bg-gray-100 dark:bg-gray-800 transition-all duration-500">
                                             <img 
                                                 src={testimonial.image} 
                                                 alt={testimonial.name}
