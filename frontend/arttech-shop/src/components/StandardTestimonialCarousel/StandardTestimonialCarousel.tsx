@@ -78,7 +78,7 @@ export function StandardTestimonialCarousel() {
     };
 
     return (
-        <section className="relative w-full py-0 md:py-24 bg-[var(--color-surface)] dark:bg-[var(--color-dark-surface)] transition-colors duration-300">
+        <section className="relative w-full pb-16 md:pb-24 pt-0 md:pt-0 bg-[var(--color-surface)] dark:bg-[var(--color-dark-surface)] transition-colors duration-300">
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16 text-center">
                 <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)]">

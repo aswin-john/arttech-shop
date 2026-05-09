@@ -239,7 +239,7 @@ export function PerspectiveCarousel({
 
   return (
     <section
-      className="relative w-full py-16 md:py-24 bg-[var(--color-surface)] dark:bg-[var(--color-dark-surface)] 
+      className="relative w-full pt-16 pb-8 md:pt-24 md:pb-12 bg-[var(--color-surface)] dark:bg-[var(--color-dark-surface)] 
                  border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)] overflow-hidden transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16 text-center">
