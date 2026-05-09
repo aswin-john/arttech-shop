@@ -4,6 +4,8 @@ import { HeroCarousel } from './components/HeroCarousel/HeroCarousel';
 import { ValuePropositions } from './components/ValuePropositions/ValuePropositions';
 import { StoryCarousel } from './components/StoryCarousel';
 import { PerspectiveCarousel } from './components/PerspectiveCarousel';
+import { TestimonialCarousel } from './components/TestimonialCarousel';
+import { StandardTestimonialCarousel } from './components/StandardTestimonialCarousel';
 
 /**
  * Root application component.
@@ -19,6 +21,8 @@ function App() {
         <ValuePropositions />
         <StoryCarousel />
         <PerspectiveCarousel />
+        {/* <TestimonialCarousel /> */}
+        <StandardTestimonialCarousel />
       </main>
     </ThemeProvider>
   );
