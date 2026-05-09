@@ -6,6 +6,7 @@ import { StoryCarousel } from './components/StoryCarousel';
 import { PerspectiveCarousel } from './components/PerspectiveCarousel';
 // import { TestimonialCarousel } from './components/TestimonialCarousel';
 import { StandardTestimonialCarousel } from './components/StandardTestimonialCarousel';
+import { Review3DCarousel } from './components/Review3DCarousel';
 
 /**
  * Root application component.
@@ -23,6 +24,7 @@ function App() {
         <PerspectiveCarousel />
         {/* <TestimonialCarousel /> */}
         <StandardTestimonialCarousel />
+        <Review3DCarousel />
       </main>
     </ThemeProvider>
   );
