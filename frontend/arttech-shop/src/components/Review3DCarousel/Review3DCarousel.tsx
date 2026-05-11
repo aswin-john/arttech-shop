@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ReviewSlide, ReviewSlideData } from './ReviewSlide';
+import { ReviewSlide } from './ReviewSlide';
+import type { ReviewSlideData } from './ReviewSlide';
 
 const DUMMY_REVIEWS: ReviewSlideData[] = [
   {
