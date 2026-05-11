@@ -45,7 +45,7 @@ export function StandardTestimonialCarousel() {
             } else if (window.innerWidth < 1024) {
                 setItemsPerView(2);
             } else {
-                setItemsPerView(3);
+                setItemsPerView(4);
             }
         };
 
@@ -79,8 +79,7 @@ export function StandardTestimonialCarousel() {
 
     return (
         <section className="relative w-full pb-16 md:pb-24 pt-0 md:pt-0 bg-[var(--color-surface)] dark:bg-[var(--color-dark-surface)] transition-colors duration-300">
-            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16 text-center">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16 text-center">
                 <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)]">
                     Community Testimonials
                 </h2>
@@ -88,20 +87,9 @@ export function StandardTestimonialCarousel() {
                     Hear what artists and creators have to say about our platform.
                 </p>
             </div>
-                {/* Carousel Wrapper */}
-                <div className="flex items-center group relative">
-                    
-                    {/* Prev Arrow */}
-                    <button
-                        onClick={handlePrev}
-                        aria-label="Previous testimonials"
-                        className="hidden md:flex absolute -left-4 lg:-left-12 z-10 w-12 h-12 items-center justify-center text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)] hover:opacity-70 transition-opacity focus:outline-none"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-12 h-12" strokeWidth={1}>
-                            <path strokeLinecap="square" strokeLinejoin="miter" d="M15 19l-7-7 7-7" />
-                        </svg>
-                    </button>
 
+            <div className="relative w-full select-none pb-12">
+                <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Track Container */}
                     <div className="overflow-hidden w-full px-2 py-4">
                         <div 
@@ -113,80 +101,92 @@ export function StandardTestimonialCarousel() {
                             {testimonials.map((testimonial) => (
                                 <div 
                                     key={testimonial.id}
-                                    className="px-4 flex-shrink-0"
+                                    className="px-4 flex-shrink-0 group cursor-pointer"
                                     style={{ width: `${100 / itemsPerView}%` }}
                                 >
                                     <div className="flex flex-col h-full bg-transparent">
-                                        <div className="w-full aspect-square md:aspect-[4/3] lg:aspect-square overflow-hidden mb-6 border border-[var(--color-border)] dark:border-[var(--color-dark-border)] bg-gray-100 dark:bg-gray-800 transition-all duration-500">
-                                            <img 
-                                                src={testimonial.image} 
-                                                alt={testimonial.name}
-                                                className="w-full h-full object-cover"
-                                                loading="lazy"
-                                            />
+                                        <div className="w-full h-[200px] md:h-[400px] bg-center bg-cover transition-transform duration-500 ease-out group-hover:scale-[1.02] rounded-xl shadow-lg"
+                                             style={{ backgroundImage: `url(${testimonial.image})` }}
+                                        />
+                                        <div className="mt-4 md:mt-6 text-center">
+                                            <h3 className="font-display text-base md:text-xl font-bold tracking-wide text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)] uppercase">
+                                                {testimonial.name}
+                                            </h3>
+                                            <p className="mt-2 md:mt-3 font-body text-xs md:text-sm tracking-wide opacity-80 text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] line-clamp-2 md:line-clamp-none">
+                                                {testimonial.desc}
+                                            </p>
                                         </div>
-                                        <h3 className="font-display font-bold text-lg text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)] tracking-wide uppercase mb-3">
-                                            {testimonial.name}
-                                        </h3>
-                                        <p className="font-body text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] text-sm md:text-base leading-relaxed">
-                                            {testimonial.desc}
-                                        </p>
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </div>
+                </div>
 
-                    {/* Next Arrow */}
+                {/* Controls */}
+                <button
+                    className="absolute left-4 sm:left-8 top-[35%] sm:top-[40%] -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full z-20
+                               bg-[var(--color-surface-elevated)] dark:bg-[var(--color-dark-surface-elevated)]
+                               border border-[var(--color-border)] dark:border-[var(--color-dark-border)]
+                               text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)]
+                               hover:text-[var(--color-brand-600)] dark:hover:text-[var(--color-brand-400)]
+                               hover:border-[var(--color-brand-500)] dark:hover:border-[var(--color-brand-500)]
+                               hover:shadow-[0_4px_14px_rgba(34,197,94,0.15)]
+                               transition-all duration-300 focus:outline-none"
+                    onClick={handlePrev}
+                    aria-label="Previous testimonials"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                        strokeWidth={2}
+                    >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+
+                <button
+                    className="absolute right-4 sm:right-8 top-[35%] sm:top-[40%] -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full z-20
+                               bg-[var(--color-surface-elevated)] dark:bg-[var(--color-dark-surface-elevated)]
+                               border border-[var(--color-border)] dark:border-[var(--color-dark-border)]
+                               text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)]
+                               hover:text-[var(--color-brand-600)] dark:hover:text-[var(--color-brand-400)]
+                               hover:border-[var(--color-brand-500)] dark:hover:border-[var(--color-brand-500)]
+                               hover:shadow-[0_4px_14px_rgba(34,197,94,0.15)]
+                               transition-all duration-300 focus:outline-none"
+                    onClick={handleNext}
+                    aria-label="Next testimonials"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                        strokeWidth={2}
+                    >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+
+            {/* Dots */}
+            <div className="flex justify-center items-center mt-2 space-x-3">
+                {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
                     <button
-                        onClick={handleNext}
-                        aria-label="Next testimonials"
-                        className="hidden md:flex absolute -right-4 lg:-right-12 z-10 w-12 h-12 items-center justify-center text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)] hover:opacity-70 transition-opacity focus:outline-none"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-12 h-12" strokeWidth={1}>
-                            <path strokeLinecap="square" strokeLinejoin="miter" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
-                </div>
-
-                {/* Mobile Arrows (Visible only on small screens) */}
-                <div className="flex md:hidden justify-between mt-6 px-4">
-                     <button
-                        onClick={handlePrev}
-                        aria-label="Previous testimonials"
-                        className="w-10 h-10 flex items-center justify-center text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)] focus:outline-none"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8" strokeWidth={1.5}>
-                            <path strokeLinecap="square" strokeLinejoin="miter" d="M15 19l-7-7 7-7" />
-                        </svg>
-                    </button>
-                    <button
-                        onClick={handleNext}
-                        aria-label="Next testimonials"
-                        className="w-10 h-10 flex items-center justify-center text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)] focus:outline-none"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8" strokeWidth={1.5}>
-                            <path strokeLinecap="square" strokeLinejoin="miter" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
-                </div>
-
-                {/* Dots */}
-                <div className="flex justify-center items-center mt-12 space-x-3">
-                    {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
-                        <button
-                            key={idx}
-                            onClick={() => handleDotClick(idx)}
-                            aria-label={`Go to slide ${idx + 1}`}
-                            className={`rounded-full transition-all duration-300 focus:outline-none
-                                ${idx === currentIndex 
-                                    ? 'w-2.5 h-2.5 bg-[var(--color-text-primary)] dark:bg-[var(--color-dark-text-primary)]' 
-                                    : 'w-2.5 h-2.5 bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600'
-                                }`}
-                        />
-                    ))}
-                </div>
-
+                        key={idx}
+                        onClick={() => handleDotClick(idx)}
+                        aria-label={`Go to slide ${idx + 1}`}
+                        className={`rounded-full transition-all duration-300 focus:outline-none
+                            ${idx === currentIndex 
+                                ? 'w-2.5 h-2.5 bg-[var(--color-text-primary)] dark:bg-[var(--color-dark-text-primary)]' 
+                                : 'w-2.5 h-2.5 bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600'
+                            }`}
+                    />
+                ))}
             </div>
         </section>
     );
