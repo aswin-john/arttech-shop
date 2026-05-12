@@ -15,16 +15,16 @@ const IMAGES = [
 const POSITION_CLASSES: Record<string, string> = {
   selected:
     'z-10 left-1/2 -translate-x-1/2 translate-y-0 w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80 opacity-100',
-  prev: 'z-[5] left-[20%] sm:left-[28%] -translate-x-1/2 translate-y-0 w-44 h-44 sm:w-56 sm:h-56 lg:w-[280px] lg:h-[280px] opacity-100',
-  next: 'z-[5] left-[80%] sm:left-[72%] -translate-x-1/2 translate-y-0 w-44 h-44 sm:w-56 sm:h-56 lg:w-[280px] lg:h-[280px] opacity-100',
+  prev: 'z-[5] left-[20%] sm:left-[28%] lg:left-[30%] -translate-x-1/2 translate-y-0 w-44 h-44 sm:w-56 sm:h-56 lg:w-[280px] lg:h-[280px] opacity-100',
+  next: 'z-[5] left-[80%] sm:left-[72%] lg:left-[70%] -translate-x-1/2 translate-y-0 w-44 h-44 sm:w-56 sm:h-56 lg:w-[280px] lg:h-[280px] opacity-100',
   prevLeftSecond:
-    'z-[2] left-[5%] sm:left-[40%] -translate-x-[80%] sm:-translate-x-[65%] translate-y-[5%] w-28 h-28 sm:w-40 sm:h-40 lg:w-[230px] lg:h-[230px] opacity-40 sm:opacity-100 brightness-50 sm:brightness-60',
+    'z-[2] left-[5%] sm:left-[40%] lg:left-[12%] -translate-x-[80%] sm:-translate-x-[65%] lg:-translate-x-1/2 translate-y-[5%] lg:translate-y-0 w-28 h-28 sm:w-40 sm:h-40 lg:w-[220px] lg:h-[220px] opacity-40 sm:opacity-100 brightness-50 sm:brightness-60 lg:brightness-50',
   nextRightSecond:
-    'z-[2] left-[95%] sm:left-[60%] -translate-x-[20%] sm:-translate-x-[35%] translate-y-[5%] w-28 h-28 sm:w-40 sm:h-40 lg:w-[230px] lg:h-[230px] opacity-40 sm:opacity-100 brightness-50 sm:brightness-60',
+    'z-[2] left-[95%] sm:left-[60%] lg:left-[88%] -translate-x-[20%] sm:-translate-x-[35%] lg:-translate-x-1/2 translate-y-[5%] lg:translate-y-0 w-28 h-28 sm:w-40 sm:h-40 lg:w-[220px] lg:h-[220px] opacity-40 sm:opacity-100 brightness-50 sm:brightness-60 lg:brightness-50',
   hideLeft:
-    'z-0 left-0 -translate-x-full opacity-0 w-24 h-24 sm:w-40 sm:h-40 lg:w-[230px] lg:h-[230px]',
+    'z-0 left-0 -translate-x-full opacity-0 w-24 h-24 sm:w-40 sm:h-40 lg:w-[220px] lg:h-[220px]',
   hideRight:
-    'z-0 left-full translate-x-0 opacity-0 w-24 h-24 sm:w-40 sm:h-40 lg:w-[230px] lg:h-[230px]',
+    'z-0 left-full translate-x-0 opacity-0 w-24 h-24 sm:w-40 sm:h-40 lg:w-[220px] lg:h-[220px]',
 };
 
 /**
