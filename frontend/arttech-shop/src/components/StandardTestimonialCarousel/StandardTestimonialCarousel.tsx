@@ -37,15 +37,19 @@ export function StandardTestimonialCarousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [itemsPerView, setItemsPerView] = useState(3);
     const [isAnimating, setIsAnimating] = useState(false);
+    const [screenWidth, setScreenWidth] = useState(
+        typeof window !== 'undefined' ? window.innerWidth : 1000
+    );
 
     useEffect(() => {
         const handleResize = () => {
+            setScreenWidth(window.innerWidth);
             if (window.innerWidth < 640) {
                 setItemsPerView(1);
             } else if (window.innerWidth < 1024) {
                 setItemsPerView(2);
             } else {
-                setItemsPerView(4);
+                setItemsPerView(3);
             }
         };
 
@@ -53,6 +57,14 @@ export function StandardTestimonialCarousel() {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
+    const isMobile = screenWidth < 768;
+    const itemMargin = isMobile ? 16 : 40;
+    const itemWidth = screenWidth > 900 
+        ? 400 
+        : isMobile 
+            ? (screenWidth - itemMargin * 3) / 2 
+            : screenWidth * 0.85;
 
     const maxIndex = Math.max(0, testimonials.length - itemsPerView);
 
@@ -88,21 +100,24 @@ export function StandardTestimonialCarousel() {
                 </p>
             </div>
 
-            <div className="relative w-full select-none pb-12">
-                <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative w-full select-none pb-12 overflow-hidden">
+                <div className="w-full pl-4 sm:pl-8 lg:pl-[240px] relative transition-all duration-300 ease-in-out">
                     {/* Track Container */}
-                    <div className="overflow-hidden w-full px-2 py-4">
+                    <div className="w-full py-4">
                         <div 
                             className="flex transition-transform duration-500 ease-in-out"
                             style={{ 
-                                transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
+                                transform: `translateX(-${currentIndex * (itemWidth + itemMargin)}px)`,
                             }}
                         >
                             {testimonials.map((testimonial) => (
                                 <div 
                                     key={testimonial.id}
-                                    className="px-4 flex-shrink-0 group cursor-pointer"
-                                    style={{ width: `${100 / itemsPerView}%` }}
+                                    className="flex-shrink-0 group cursor-pointer"
+                                    style={{ 
+                                        width: itemWidth,
+                                        marginRight: itemMargin,
+                                    }}
                                 >
                                     <div className="flex flex-col h-full bg-transparent">
                                         <div className="w-full h-[200px] md:h-[400px] bg-center bg-cover transition-transform duration-500 ease-out group-hover:scale-[1.02] rounded-xl shadow-lg"
