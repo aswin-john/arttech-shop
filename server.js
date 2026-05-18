@@ -19,8 +19,15 @@ app.use(cors({
 }));
 
 const orderRoute = require("./route/orderRoute");
+//  Webhook route must be registered BEFORE express.json()
+// express.raw() keeps req.body as a raw Buffer for signature verification
+app.use("/webhook", express.raw({ type: "application/json" }));
+
+// Global JSON parsing for all other routes
+app.use(express.json());
 
 app.use("/", orderRoute);
+
 
 app.get('/', (req, res) => {
   res.send(`ArtTech ${ENVIRONMENT} Server is running — v${VERSION}`);
