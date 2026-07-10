@@ -1,12 +1,12 @@
 import { ThemeProvider } from './context/ThemeContext';
 import { Header } from './components/Header/Header';
-import { HeroCarousel } from './components/HeroCarousel/HeroCarousel';
-import { ValuePropositions } from './components/ValuePropositions/ValuePropositions';
-import { StoryCarousel } from './components/StoryCarousel';
-import { PerspectiveCarousel } from './components/PerspectiveCarousel';
+// import { HeroCarousel } from './components/HeroCarousel/HeroCarousel';
+// import { ValuePropositions } from './components/ValuePropositions/ValuePropositions';
+// import { StoryCarousel } from './components/StoryCarousel';
+// import { PerspectiveCarousel } from './components/PerspectiveCarousel';
 // import { TestimonialCarousel } from './components/TestimonialCarousel';
-import { StandardTestimonialCarousel } from './components/StandardTestimonialCarousel';
-import { Review3DCarousel } from './components/Review3DCarousel';
+// import { StandardTestimonialCarousel } from './components/StandardTestimonialCarousel';
+// import { Review3DCarousel } from './components/Review3DCarousel';
 
 /**
  * Root application component.
@@ -18,13 +18,13 @@ function App() {
     <ThemeProvider>
       <Header />
       <main className="pt-16 lg:pt-[4.5rem]">
-        <HeroCarousel />
+        {/* <HeroCarousel />
         <ValuePropositions />
         <StoryCarousel />
-        <PerspectiveCarousel />
+        <PerspectiveCarousel /> */}
         {/* <TestimonialCarousel /> */}
-        <StandardTestimonialCarousel />
-        <Review3DCarousel />
+        {/* <StandardTestimonialCarousel />
+        <Review3DCarousel /> */}
       </main>
     </ThemeProvider>
   );
