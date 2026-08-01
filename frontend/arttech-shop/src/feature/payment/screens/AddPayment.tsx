@@ -44,26 +44,31 @@ export const AddPayment = () => {
         description: 'Order Payment',
         order_id: data.id, // this ties the popup to the exact order your backend created
         handler: async function (
-          // response
+          response: any
         ) {
       // response contains: razorpay_order_id, razorpay_payment_id, razorpay_signature
-    // try {
-    //   const verifyRes = await fetch('http://localhost:3000/verify-payment', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(response),
-    //   });
-    //   const result = await verifyRes.json();
-
-    //   if (result.success) {
-    //     alert('Payment successful!');
-    //     // TODO: redirect to a success page, update UI, clear cart, etc.
-    //   } else {
-    //     alert('Payment verification failed. Contact support if money was deducted.');
-    //   }
-    // } catch (err) {
-    //   alert('Something went wrong verifying your payment. Please contact support.');
-    // }
+      console.log("Response Verify Payment",response)
+    try {
+      const verifyRes = await fetch('http://localhost:3000/verify-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          razorpay_order_id: response.razorpay_order_id,
+          razorpay_payment_id: response.razorpay_payment_id, 
+          razorpay_signature:  response.razorpay_signature 
+        }),
+      });
+      const result = await verifyRes.json();
+      console.log("verify response",result)
+      if (result.success) {
+        alert('Payment successful!');
+        // TODO: redirect to a success page, update UI, clear cart, etc.
+      } else {
+        alert('Payment verification failed. Contact support if money was deducted.');
+      }
+    } catch (err) {
+      alert('Something went wrong verifying your payment. Please contact support.');
+    }
   },
         // prefill: {
         //   name: 'Customer Name',
