@@ -1,5 +1,6 @@
 import { ThemeProvider } from './context/ThemeContext';
 import { Header } from './components/Header/Header';
+import { AddPayment } from './feature/payment/screens/AddPayment';
 // import { HeroCarousel } from './components/HeroCarousel/HeroCarousel';
 // import { ValuePropositions } from './components/ValuePropositions/ValuePropositions';
 // import { StoryCarousel } from './components/StoryCarousel';
@@ -25,6 +26,7 @@ function App() {
         {/* <TestimonialCarousel /> */}
         {/* <StandardTestimonialCarousel />
         <Review3DCarousel /> */}
+        <AddPayment />
       </main>
     </ThemeProvider>
   );
