@@ -32,17 +32,28 @@ export const AddPayment = () => {
             amount: 100
         })
       })
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        alert(errorData?.message ?? 'Failed to create order. Please try again.');
+        return;
+      }
+
       const data = await response.json()
-      console.log(data)
+
+      if (!data.success || !data.order) {
+        alert(data.message ?? 'Order creation failed. Please try again.');
+        return;
+      }
 
 
       const options = {
         key: import.meta.env.VITE_RAZORPAY_KEY_ID, // public key, safe in frontend
-        amount: data.amount,
-        currency: data.currency,
+        amount: data.order.amount,
+        currency: data.order.currency,
         name: 'ArtTech',
         description: 'Order Payment',
-        order_id: data.id, // this ties the popup to the exact order your backend created
+        order_id: data.order.id, // this ties the popup to the exact order your backend created
         handler: async function (
           response: any
         ) {
