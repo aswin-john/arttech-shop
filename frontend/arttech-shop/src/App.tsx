@@ -1,6 +1,6 @@
 import { ThemeProvider } from './context/ThemeContext';
 import { Header } from './components/Header/Header';
-import { AddPayment } from './feature/payment/screens/AddPayment';
+import { AddPayment } from './feature/payment';
 // import { HeroCarousel } from './components/HeroCarousel/HeroCarousel';
 // import { ValuePropositions } from './components/ValuePropositions/ValuePropositions';
 // import { StoryCarousel } from './components/StoryCarousel';
