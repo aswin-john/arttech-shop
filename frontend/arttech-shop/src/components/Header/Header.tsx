@@ -5,11 +5,11 @@ import type { NavLink } from './types';
 
 const NAV_LINKS: NavLink[] = [
   { label: 'Home', href: '#', isActive: true },
-  { label: 'Services', href: '#services', hasDropdown: true },
-  { label: 'Designs', href: '#designs' },
-  { label: 'Blog', href: '#blog' },
+  // { label: 'Services', href: '#services', hasDropdown: true },
+  { label: 'Shops', href: '#shops' , hasDropdown: true},
+  // { label: 'Blog', href: '#blog' },
   { label: 'Contact', href: '#contact' },
-  { label: 'Partner', href: '#partner' },
+  // { label: 'Partner', href: '#partner' },
 ];
 
 /** Search icon SVG */
