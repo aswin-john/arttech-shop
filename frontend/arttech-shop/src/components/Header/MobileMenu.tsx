@@ -1,4 +1,5 @@
 import { useEffect, type ReactNode } from 'react';
+import { NavLink as RouterNavLink } from 'react-router-dom';
 import { ThemeSwitcher } from '../ThemeSwitcher/ThemeSwitcher';
 import type { NavLink } from './types';
 
@@ -111,8 +112,8 @@ export function MobileMenu({
       >
         {/* Drawer header */}
         <div className="flex items-center justify-between px-5 h-16 border-b border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
-          <a
-            href="#"
+          <RouterNavLink
+            to="/"
             className="flex items-center gap-2 text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)] no-underline"
           >
             <span
@@ -124,7 +125,7 @@ export function MobileMenu({
             <span className="font-display text-lg font-bold tracking-wide uppercase">
               Berlion
             </span>
-          </a>
+          </RouterNavLink>
 
           <button
             type="button"
@@ -144,20 +145,22 @@ export function MobileMenu({
           <ul className="list-none p-0 m-0 flex flex-col gap-1">
             {links.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
+                <RouterNavLink
+                  to={link.href}
+                  end={link.href === '/'}
                   onClick={onClose}
-                  className={`flex items-center justify-between px-3 py-3 rounded-lg text-base font-medium
-                             transition-colors duration-200
-                             ${
-                               link.isActive
-                                 ? 'text-[var(--color-brand-600)] dark:text-[var(--color-brand-400)] bg-[var(--color-brand-50)] dark:bg-[var(--color-brand-900)]/20'
-                                 : 'text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)] hover:bg-[var(--color-border-subtle)] dark:hover:bg-[var(--color-dark-border)]'
-                             }`}
+                  className={({ isActive }) =>
+                    `flex items-center justify-between px-3 py-3 rounded-lg text-base font-medium
+                     transition-colors duration-200
+                     ${isActive
+                       ? 'text-[var(--color-brand-600)] dark:text-[var(--color-brand-400)] bg-[var(--color-brand-50)] dark:bg-[var(--color-brand-900)]/20'
+                       : 'text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)] hover:bg-[var(--color-border-subtle)] dark:hover:bg-[var(--color-dark-border)]'
+                     }`
+                  }
                 >
                   {link.label}
                   {link.hasDropdown && <ChevronDownIcon />}
-                </a>
+                </RouterNavLink>
               </li>
             ))}
           </ul>

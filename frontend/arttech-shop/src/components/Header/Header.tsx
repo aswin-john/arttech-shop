@@ -1,15 +1,17 @@
 import { useState, useEffect, type ReactNode } from 'react';
+import { NavLink as RouterNavLink } from 'react-router-dom';
 import { ThemeSwitcher } from '../ThemeSwitcher/ThemeSwitcher';
 import { MobileMenu } from './MobileMenu';
 import type { NavLink } from './types';
 
 const NAV_LINKS: NavLink[] = [
-  { label: 'Home', href: '#', isActive: true },
+  { label: 'Home', href: '/' },
   // { label: 'Services', href: '#services', hasDropdown: true },
-  { label: 'Shops', href: '#shops' , hasDropdown: true},
+  { label: 'Shops', href: '/shops' , hasDropdown: true},
   // { label: 'Blog', href: '#blog' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contact', href: '/contact' },
   // { label: 'Partner', href: '#partner' },
+  // { label: 'Payment', href: '/payment' },
 ];
 
 /** Search icon SVG */
@@ -155,27 +157,29 @@ export function Header(): ReactNode {
                 aria-label="Main navigation"
               >
                 {NAV_LINKS.map((link) => (
-                  <a
+                  <RouterNavLink
                     key={link.label}
-                    href={link.href}
-                    className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium
-                               transition-colors duration-200
-                               ${
-                                 link.isActive
-                                   ? 'text-[var(--color-brand-600)] dark:text-[var(--color-brand-400)]'
-                                   : 'text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] hover:text-[var(--color-text-primary)] dark:hover:text-[var(--color-dark-text-primary)]'
-                               }`}
+                    to={link.href}
+                    end={link.href === '/'}
+                    className={({ isActive }) =>
+                      `flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium
+                       transition-colors duration-200
+                       ${isActive
+                         ? 'text-[var(--color-brand-600)] dark:text-[var(--color-brand-400)]'
+                         : 'text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] hover:text-[var(--color-text-primary)] dark:hover:text-[var(--color-dark-text-primary)]'
+                       }`
+                    }
                   >
                     {link.label}
                     {link.hasDropdown && <ChevronDownIcon />}
-                  </a>
+                  </RouterNavLink>
                 ))}
               </nav>
             </div>
 
             {/* ─── Center: Logo ─── */}
-            <a
-              href="#"
+            <RouterNavLink
+              to="/"
               id="logo"
               className="flex items-center gap-2 text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)]
                          no-underline shrink-0"
@@ -190,7 +194,7 @@ export function Header(): ReactNode {
               <span className="font-display text-xl font-bold tracking-wide uppercase">
                 Berlion
               </span>
-            </a>
+            </RouterNavLink>
 
             {/* ─── Right: Actions ─── */}
             <div className="flex items-center gap-1 flex-1 justify-end">

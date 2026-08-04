@@ -1,0 +1,1 @@
+export { ShopsScreen } from './ShopsScreen';
