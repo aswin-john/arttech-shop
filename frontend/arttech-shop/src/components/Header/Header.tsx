@@ -1,4 +1,4 @@
-import { useState, useEffect, type ReactNode } from 'react';
+import { useState, useEffect, useRef, useCallback, type ReactNode } from 'react';
 import { NavLink as RouterNavLink } from 'react-router-dom';
 import { ThemeSwitcher } from '../ThemeSwitcher/ThemeSwitcher';
 import { MobileMenu } from './MobileMenu';
@@ -6,12 +6,16 @@ import type { NavLink } from './types';
 
 const NAV_LINKS: NavLink[] = [
   { label: 'Home', href: '/' },
-  // { label: 'Services', href: '#services', hasDropdown: true },
-  { label: 'Shops', href: '/shops' , hasDropdown: true},
-  // { label: 'Blog', href: '#blog' },
+  {
+    label: 'Shops',
+    href: '/shops',
+    hasDropdown: true,
+    children: [
+      { label: 'Original Artworks', href: '/shops/original-artworks' },
+      { label: 'Limited Edition Prints', href: '/shops/limited-edition-prints' },
+    ],
+  },
   { label: 'Contact', href: '/contact' },
-  // { label: 'Partner', href: '#partner' },
-  // { label: 'Payment', href: '/payment' },
 ];
 
 /** Search icon SVG */
@@ -110,6 +114,8 @@ function ChevronDownIcon(): ReactNode {
 export function Header(): ReactNode {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Track scroll position for header background change
   useEffect(() => {
@@ -119,6 +125,41 @@ export function Header(): ReactNode {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent): void {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setOpenDropdown(null);
+      }
+    }
+
+    if (openDropdown) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [openDropdown]);
+
+  // Close dropdown on Escape
+  useEffect(() => {
+    function handleEscape(event: KeyboardEvent): void {
+      if (event.key === 'Escape') {
+        setOpenDropdown(null);
+      }
+    }
+
+    if (openDropdown) {
+      document.addEventListener('keydown', handleEscape);
+    }
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [openDropdown]);
+
+  const toggleDropdown = useCallback((label: string): void => {
+    setOpenDropdown((prev) => (prev === label ? null : label));
   }, []);
 
   return (
@@ -156,24 +197,91 @@ export function Header(): ReactNode {
                 className="hidden lg:flex items-center gap-1"
                 aria-label="Main navigation"
               >
-                {NAV_LINKS.map((link) => (
-                  <RouterNavLink
-                    key={link.label}
-                    to={link.href}
-                    end={link.href === '/'}
-                    className={({ isActive }) =>
-                      `flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium
-                       transition-colors duration-200
-                       ${isActive
-                         ? 'text-[var(--color-brand-600)] dark:text-[var(--color-brand-400)]'
-                         : 'text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] hover:text-[var(--color-text-primary)] dark:hover:text-[var(--color-dark-text-primary)]'
-                       }`
-                    }
-                  >
-                    {link.label}
-                    {link.hasDropdown && <ChevronDownIcon />}
-                  </RouterNavLink>
-                ))}
+                {NAV_LINKS.map((link) =>
+                  link.hasDropdown && link.children ? (
+                    <div
+                      key={link.label}
+                      ref={dropdownRef}
+                      className="relative"
+                    >
+                      <button
+                        id={`dropdown-trigger-${link.label.toLowerCase()}`}
+                        type="button"
+                        onClick={() => toggleDropdown(link.label)}
+                        className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium
+                          transition-colors duration-200 cursor-pointer
+                          ${
+                            openDropdown === link.label
+                              ? 'text-[var(--color-brand-600)] dark:text-[var(--color-brand-400)]'
+                              : 'text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] hover:text-[var(--color-text-primary)] dark:hover:text-[var(--color-dark-text-primary)]'
+                          }`}
+                        aria-expanded={openDropdown === link.label}
+                        aria-haspopup="true"
+                      >
+                        {link.label}
+                        <span
+                          className={`transition-transform duration-200 ${
+                            openDropdown === link.label ? 'rotate-180' : ''
+                          }`}
+                        >
+                          <ChevronDownIcon />
+                        </span>
+                      </button>
+
+                      {/* Dropdown panel */}
+                      {openDropdown === link.label && (
+                        <div
+                          id={`dropdown-menu-${link.label.toLowerCase()}`}
+                          className="absolute top-full left-0 mt-1 w-56
+                            rounded-xl overflow-hidden
+                            bg-[var(--color-surface)] dark:bg-[var(--color-dark-surface-elevated)]
+                            border border-[var(--color-border)] dark:border-[var(--color-dark-border)]
+                            shadow-lg dark:shadow-black/30"
+                          style={{ animation: 'dropdownIn 0.2s var(--ease-out-expo) forwards' }}
+                          role="menu"
+                        >
+                          <ul className="list-none p-1.5 m-0 flex flex-col gap-0.5">
+                            {link.children.map((child) => (
+                              <li key={child.label} role="none">
+                                <RouterNavLink
+                                  to={child.href}
+                                  onClick={() => setOpenDropdown(null)}
+                                  className={({ isActive }) =>
+                                    `block px-3 py-2.5 rounded-lg text-sm font-medium
+                                     transition-colors duration-150
+                                     ${isActive
+                                       ? 'text-[var(--color-brand-600)] dark:text-[var(--color-brand-400)] bg-[var(--color-brand-50)] dark:bg-[var(--color-brand-900)]/20'
+                                       : 'text-[var(--color-text-primary)] dark:text-[var(--color-dark-text-primary)] hover:bg-[var(--color-border-subtle)] dark:hover:bg-[var(--color-dark-border)]'
+                                     }`
+                                  }
+                                  role="menuitem"
+                                >
+                                  {child.label}
+                                </RouterNavLink>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <RouterNavLink
+                      key={link.label}
+                      to={link.href}
+                      end={link.href === '/'}
+                      className={({ isActive }) =>
+                        `flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium
+                         transition-colors duration-200
+                         ${isActive
+                           ? 'text-[var(--color-brand-600)] dark:text-[var(--color-brand-400)]'
+                           : 'text-[var(--color-text-secondary)] dark:text-[var(--color-dark-text-secondary)] hover:text-[var(--color-text-primary)] dark:hover:text-[var(--color-dark-text-primary)]'
+                         }`
+                      }
+                    >
+                      {link.label}
+                    </RouterNavLink>
+                  ),
+                )}
               </nav>
             </div>
 

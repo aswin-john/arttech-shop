@@ -41,7 +41,7 @@ function App() {
         <Suspense>
           <Routes>
             <Route path="/" element={<HomeScreen />} />
-            <Route path="/shops" element={<ShopsScreen />} />
+            <Route path="/shops/*" element={<ShopsScreen />} />
             <Route path="/contact" element={<ContactScreen />} />
             <Route path="/payment" element={<AddPayment />} />
           </Routes>
