@@ -33,13 +33,12 @@ export function ArtworkCard({ product }: ArtworkCardProps): ReactNode {
                   hover:scale-[1.02]`}
     >
       {/* Image container */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--color-surface-elevated)] dark:bg-[#1a1a24] p-4 flex items-center justify-center 
-      ">
+      <div className="relative aspect-square w-full overflow-hidden bg-[var(--color-surface-elevated)] dark:bg-[#1a1a24] p-3 flex items-center justify-center">
         <img
           src={product.image}
           alt={product.title}
           loading="lazy"
-          className={`max-h-full max-w-full object-contain transition-transform duration-500 ease-[var(--ease-out-expo)]
+          className={`h-full w-full object-cover transition-transform duration-500 ease-[var(--ease-out-expo)]
                      group-hover:scale-105 drop-shadow-lg 
                      ${isSold ? 'grayscale opacity-60' : ''}`}
         />
@@ -155,24 +154,25 @@ function PrintVariantBlock({
         })}
       </div>
 
-      {/* Price */}
-      <p
-        className={`font-body text-lg font-bold
-                    ${
-                      allSoldOut
-                        ? 'text-[var(--color-text-muted)] dark:text-[var(--color-dark-text-muted)] line-through'
-                        : 'text-[var(--color-brand-700)] dark:text-[var(--color-brand-400)]'
-                    }`}
-      >
-        {formatPrice(selected.price)}
-      </p>
-
-      {/* Stock indicator */}
-      {!allSoldOut && !selectedSoldOut && (
-        <p className="text-xs text-[var(--color-text-muted)] dark:text-[var(--color-dark-text-muted)]">
-          {remaining} / {selected.totalEditions} left
+      {/* Price & Stock Indicator */}
+      <div className="flex items-center justify-between">
+        <p
+          className={`font-body text-lg font-bold
+                      ${
+                        allSoldOut
+                          ? 'text-[var(--color-text-muted)] dark:text-[var(--color-dark-text-muted)] line-through'
+                          : 'text-[var(--color-brand-700)] dark:text-[var(--color-brand-400)]'
+                      }`}
+        >
+          {formatPrice(selected.price)}
         </p>
-      )}
+
+        {!allSoldOut && !selectedSoldOut && (
+          <p className="text-xs text-[var(--color-text-muted)] dark:text-[var(--color-dark-text-muted)]">
+            {remaining} / {selected.totalEditions} left
+          </p>
+        )}
+      </div>
     </div>
   );
 }

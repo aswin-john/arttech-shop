@@ -70,7 +70,9 @@ export const LIMITED_EDITION_PRINTS: LimitedEditionPrint[] = [
   },
   {
     id: 'lep-2',
-    title: 'Botanical Study — Monstera & Fern',
+    title: 'Botanical Study',
+    // — Monstera & Fern
+    
     subtitle: 'Archival Giclée on Cotton Rag',
     image: asset('/images/artworks/botanical-fern.png'),
     type: 'limited-edition',
