@@ -20,7 +20,7 @@ export const ORIGINAL_ARTWORKS: OriginalArtwork[] = [
   {
     id: 'oa-2',
     title: 'Geometric Reverie',
-    subtitle: 'Mixed Media on Canvas — 40 × 50 in',
+    subtitle: 'Mixed Media on Canvas — 40 × 50',
     image: asset('/images/artworks/geometric-blue.png'),
     type: 'original',
     price: 120000,
