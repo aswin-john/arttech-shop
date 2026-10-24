@@ -1,14 +1,22 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const connectWithRetry = async () => {
-  try {
-    const DB = process.env.DATABASE;
-    await mongoose.connect(DB);
-    console.log(`📡...${process.env.ENVIRONMENT} ${process.env.PROJECT_NAME} DATABASE CONNECTED SUCCESSFULLY...📡`);
-  } catch (error) {
-    console.error("Database connection error:", error.message);
-    setTimeout(connectWithRetry, 5000);
+const delay = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
+
+async function connectWithRetry() {
+  const databaseUri = process.env.DATABASE;
+  if (!databaseUri) throw new Error("DATABASE is missing from the environment.");
+
+  while (true) {
+    try {
+      await mongoose.connect(databaseUri);
+      console.log(`${process.env.ENVIRONMENT || "DEV"} ${process.env.PROJECT_NAME || "ArtTech"} database connected successfully.`);
+      return;
+    } catch (error) {
+      console.error("Database connection error:", error.message);
+      console.log("Retrying MongoDB connection in 5 seconds...");
+      await delay(5000);
+    }
   }
-};
+}
 
 module.exports = connectWithRetry;
