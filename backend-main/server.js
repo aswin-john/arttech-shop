@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ quiet: true });
 
 const express = require("express");
 const cors = require("cors");
@@ -6,7 +6,7 @@ const connectDB = require("./database/connection/connection");
 const userRoutes = require("./route/route");
 
 const app = express();
-const PORT = Number(process.env.PORT) || 5000;
+const PORT = Number(process.env.PORT) || 3000;
 
 app.use(cors({
   origin: process.env.CLIENT_ORIGIN || "http://localhost:5173",
@@ -25,7 +25,7 @@ app.get("/api/products", (_req, res) => {
   res.json({ success: true, products: [], message: "Product catalogue is not configured yet." });
 });
 
-app.use("/api/auth", userRoutes);
+app.use("/api/users", userRoutes);
 
 app.use((err, _req, res, _next) => {
   console.error("Unhandled request error:", err);

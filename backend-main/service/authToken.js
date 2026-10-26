@@ -2,8 +2,8 @@ const crypto = require("crypto");
 
 function getSecret() {
   const secret = process.env.AUTH_TOKEN_SECRET;
-  if (!secret || secret.length < 32) {
-    throw new Error("AUTH_TOKEN_SECRET must contain at least 32 characters.");
+  if (!secret || secret.length < 12) {
+    throw new Error("AUTH_TOKEN_SECRET must contain at least 12 characters.");
   }
   return secret;
 }
