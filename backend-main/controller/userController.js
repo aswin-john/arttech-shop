@@ -50,8 +50,11 @@ module.exports.login = async (req, res) => {
     }
 
     const user = await User.findOne({ email }).select("+password");
-    if (!user || !(await verifyPassword(password, user.password))) {
-      return res.status(401).json({ success: false, message: "Email or password is incorrect." });
+    if (!user) {
+      return res.status(401).json({ success: false, message: "No account found with this email. Please register." });
+    }
+    if (!(await verifyPassword(password, user.password))) {
+      return res.status(401).json({ success: false, message: "Password is incorrect." });
     }
     // Treat legacy accounts without a role as regular customers.
     const role = user.role === "admin" ? "admin" : "user";
