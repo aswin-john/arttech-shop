@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { Header } from './components/Header/Header';
 import { AddPayment } from './feature/payment';
+import { CoursesScreen } from './feature/courses';
 // import { HeroCarousel } from './components/HeroCarousel/HeroCarousel';
 // import { ValuePropositions } from './components/ValuePropositions/ValuePropositions';
 // import { StoryCarousel } from './components/StoryCarousel';
@@ -42,6 +43,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomeScreen />} />
             <Route path="/shops/*" element={<ShopsScreen />} />
+            <Route path="/courses" element={<CoursesScreen />} />
             <Route path="/contact" element={<ContactScreen />} />
             <Route path="/payment" element={<AddPayment />} />
           </Routes>

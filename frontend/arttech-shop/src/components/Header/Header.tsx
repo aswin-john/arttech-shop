@@ -15,6 +15,7 @@ const NAV_LINKS: NavLink[] = [
       { label: 'Limited Edition Prints', href: '/shops/limited-edition-prints' },
     ],
   },
+  { label: 'Courses', href: '/courses' },
   { label: 'Contact', href: '/contact' },
 ];
 
